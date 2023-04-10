@@ -11,7 +11,7 @@
 		<Comment
 			content={comment.content}
 			createdAt={comment.createdAt}
-			score={comment.score}
+			vote={comment.score}
 			username={comment.user.username}
 			id={comment.id}
 		/>
@@ -21,7 +21,7 @@
 					<Comment
 						content={reply.content}
 						createdAt={reply.createdAt}
-						score={reply.score}
+						vote={reply.score}
 						username={reply.user.username}
 						id={reply.id}
 					/>

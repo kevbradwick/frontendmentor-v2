@@ -3,14 +3,14 @@
 
 	export let content = '';
 	export let createdAt = '';
-	export let score = 0;
+	export let vote = 0;
 	export let username = '';
 	export let id = -1;
 </script>
 
 <div class="container">
-	<VotingPill />
-	{content}
+	<VotingPill count={vote} />
+	<p>{content}</p>
 </div>
 
 <style type="text/css">

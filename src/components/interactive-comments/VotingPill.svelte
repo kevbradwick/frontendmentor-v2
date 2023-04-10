@@ -26,7 +26,6 @@
 
 	.inner {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
 		gap: 10px;
 	}
@@ -44,5 +43,11 @@
 		justify-content: center;
 		align-items: center;
 		height: 20px;
+	}
+
+	@media screen and (min-width: 768px) {
+		.inner {
+			flex-direction: column;
+		}
 	}
 </style>

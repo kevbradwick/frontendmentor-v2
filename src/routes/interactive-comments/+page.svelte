@@ -1,12 +1,38 @@
 <script>
   import CommentInput from "$components/interactive-comments/CommentInput.svelte";
+  import Comment from "$components/interactive-comments/Comment.svelte";
 
   /** @type {import('./$types').PageData} */
   export let data;
 
 </script>
 
-<CommentInput authorName={data.data.currentUser.username} />
+<div class="container">
+{#each data.data.comments as comment}
+  <Comment
+    content={comment.content}
+    createdAt={comment.createdAt}
+    score={comment.score}
+    username={comment.user.username}
+    id={comment.id}
+  />
+  {#if comment.replies.length > 0}
+  <div class="replies">
+    {#each comment.replies as reply}
+      <Comment
+        content={reply.content}
+        createdAt={reply.createdAt}
+        score={reply.score}
+        username={reply.user.username}
+        id={reply.id}
+      />
+    {/each}
+  </div>
+  {/if}
+{/each}
+
+  <CommentInput authorName={data.data.currentUser.username} />
+</div>
 
 <svelte:head>
   <title>Interactive Comments</title>
@@ -18,3 +44,28 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" type="text/css" href="/interactive-comments/style.css" media="screen" />
 </svelte:head>
+
+<style type="text/css">
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .replies {
+    display: flex;
+    margin-left: 36px;
+    padding-left: 36px;
+    flex-direction: column;
+    gap: 20px;
+    border-left: 1px solid var(--gray-blue);
+  }
+
+  @media screen and (min-width: 768px) {
+    .container {
+      width: 768px;
+      margin: 1rem auto;
+    }
+  }
+</style>

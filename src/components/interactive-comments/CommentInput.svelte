@@ -28,7 +28,7 @@
       "b c";
     gap: 0.7rem;
 		background-color: var(--white);
-		border-radius: 0.35rem;
+		border-radius: 0.5rem;
 		padding: 1rem;
 	}
 

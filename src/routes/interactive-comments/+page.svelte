@@ -58,16 +58,15 @@
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-		padding: 20px;
+		padding: 10px;
 	}
 
 	.replies {
 		display: flex;
-		margin-left: 36px;
-		padding-left: 36px;
+		padding-left: 12px;
 		flex-direction: column;
 		gap: 20px;
-		border-left: 1px solid var(--gray-blue);
+		border-left: 1px solid var(--light-gray-blue);
 	}
 
 	@media screen and (min-width: 768px) {
@@ -75,5 +74,10 @@
 			width: 768px;
 			margin: 1rem auto;
 		}
+
+    .replies {
+      margin-left: 38px;
+		  padding-left: 36px;
+    }
 	}
 </style>

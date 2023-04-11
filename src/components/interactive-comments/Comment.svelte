@@ -1,6 +1,7 @@
 <script>
-	import VotingPill from '$components/interactive-comments/VotingPill.svelte';
-  import Author from '$components/interactive-comments/Author.svelte';
+	import VotingPill from './VotingPill.svelte';
+  import Author from './Author.svelte';
+  import EditOptions from './EditOptions.svelte';
 
 	export let content = '';
 	export let createdAt = '';
@@ -16,10 +17,11 @@
 
   <div class="author-container">
     <Author username={username} withUsername />
+    <p>{createdAt}</p>
   </div>
 
   <div class="edit-container">
-    Edits
+    <EditOptions withDelete/>
   </div>
 
   <div class="comment-container">
@@ -30,8 +32,8 @@
 <style type="text/css">
 	.container {
 		background-color: var(--white);
-		border-radius: 0.35rem;
-		padding: 1rem;
+		border-radius: 0.5rem;
+		padding: 1.5rem;
     display: grid;
     grid-template: repeat(3, auto) / repeat(2, auto);
     grid-template-areas:
@@ -41,20 +43,29 @@
     gap: 1rem;
 	}
 
-  .voting-container {
-    grid-area: c;
-  }
-
+  .voting-container { grid-area: c; }
   .author-container {
     grid-area: a;
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
   }
-
+  .author-container p {
+    margin: 0;
+    padding: 0;
+    color: var(--gray-blue);
+    opacity: 0.7;
+  }
   .edit-container {
     grid-area: d;
+    justify-self: end;
   }
+  .comment-container { grid-area: b; }
 
-  .comment-container {
-    grid-area: b;
+  .comment-container p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.4rem;
   }
 
   @media screen and (min-width: 768px) {

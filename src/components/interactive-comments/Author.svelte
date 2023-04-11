@@ -38,6 +38,7 @@
 
     p {
       font-weight: var(--font-weight-medium);
+      color: var(--dark-blue);
       padding: 0;
       margin: 0;
     }

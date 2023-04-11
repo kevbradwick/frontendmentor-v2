@@ -46,6 +46,7 @@
 			vote={comment.score}
 			username={comment.user.username}
       on:delete={() => displayModal = true}
+      commentId={comment.id}
 		/>
 		{#if comment.replies.length > 0}
 			<div class="replies">
@@ -56,6 +57,7 @@
 						vote={reply.score}
 						username={reply.user.username}
             on:delete={onDelete(reply.id)}
+            commentId={reply.id}
 					/>
 				{/each}
 			</div>

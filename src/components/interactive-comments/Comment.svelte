@@ -3,20 +3,46 @@
 	import Author from './Author.svelte';
 	import EditOptions from './EditOptions.svelte';
   import {createEventDispatcher} from 'svelte';
-  import {currentUser} from '$lib/stores/interactive-comments';
+  import {currentUser, votes} from '$lib/stores/interactive-comments';
 
 	/** @type String */
 	export let content = '';
 	export let createdAt = '';
 	export let vote = 0;
 	export let username = '';
+  /** @type Number */
+  export let commentId;
 
   const dispatch = createEventDispatcher();
+
+  const handleUpvote = () => {
+    // @ts-ignore
+    const voteCounts = $votes[commentId] || {up: 0, down: 0};
+    if (voteCounts.up) {
+      return;
+    }
+    voteCounts.up = 1;
+    voteCounts.down = 0;
+    vote++;
+    votes.update(v => ({...v, [commentId]: voteCounts}));
+  }
+
+  const handleDownvote = () => {
+    // @ts-ignore
+    const voteCounts = $votes[commentId] || {up: 0, down: 0};
+    if (voteCounts.down) {
+      return;
+    }
+    voteCounts.down = 1;
+    voteCounts.up = 0;
+    vote--;
+    votes.update(v => ({...v, [commentId]: voteCounts}));
+  }
 </script>
 
 <div class="container">
 	<div class="voting-container">
-		<VotingPill count={vote} />
+		<VotingPill count={vote} on:upvote={handleUpvote} on:downvote={handleDownvote} />
 	</div>
 
 	<div class="author-container">

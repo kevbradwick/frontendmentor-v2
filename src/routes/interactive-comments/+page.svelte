@@ -2,29 +2,50 @@
 	import CommentInput from '$components/interactive-comments/CommentInput.svelte';
 	import Comment from '$components/interactive-comments/Comment.svelte';
 	import Modal from '$components/interactive-comments/Modal.svelte';
-	import { currentUser, onDeleteComment } from '$lib/stores/interactive-comments';
+	import { currentUser } from '$lib/stores/interactive-comments';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	currentUser.set(data.data.currentUser.username);
-  let displayModal = false;
+  let {comments} = data.data;
 
-	onDeleteComment.subscribe((id) => {
-    console.log(!!id);
-    displayModal = !!id;
-  });
+	currentUser.set(data.data.currentUser.username);
+
+  let displayModal = false;
+  let commentBeingDeleted = 0;
+
+  /**
+   * @param {Number} commentId
+   */
+  const onDelete = (commentId) => () => {
+    commentBeingDeleted = commentId;
+    displayModal = true;
+  }
+
+  const onDeleteConfirm = () => {
+    const newComments = comments.map((comment) => {
+      const replies = comment.replies.filter((reply) => reply.id !== commentBeingDeleted);
+      if (comment.id == commentBeingDeleted) {
+        return null;
+      }
+      return {
+        ...comment,
+        replies,
+      };
+    });
+    // @ts-ignore
+    comments = newComments;
+  }
 </script>
 
 <div class="container">
-	{#each data.data.comments as comment}
+	{#each comments as comment}
 		<Comment
 			content={comment.content}
 			createdAt={comment.createdAt}
 			vote={comment.score}
 			username={comment.user.username}
-			currentUser={data.data.currentUser.username}
-			onDelete={() => $onDeleteComment = comment.id}
+      on:delete={() => displayModal = true}
 		/>
 		{#if comment.replies.length > 0}
 			<div class="replies">
@@ -34,8 +55,7 @@
 						createdAt={reply.createdAt}
 						vote={reply.score}
 						username={reply.user.username}
-						currentUser={data.data.currentUser.username}
-						onDelete={() => $onDeleteComment = reply.id}
+            on:delete={onDelete(reply.id)}
 					/>
 				{/each}
 			</div>
@@ -49,7 +69,8 @@
 	title="Delete comment"
 	confirmLabel="Yes, Delete"
 	cancelLabel="No, Cancel"
-	display={displayModal}
+	bind:visible={displayModal}
+  on:confirm={onDeleteConfirm}
 >
 	<p>
 		Are you sure you want to delete this comment? This will remove the command and can't be undone.

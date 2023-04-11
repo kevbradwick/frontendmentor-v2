@@ -2,16 +2,16 @@
 	import VotingPill from './VotingPill.svelte';
 	import Author from './Author.svelte';
 	import EditOptions from './EditOptions.svelte';
+  import {createEventDispatcher} from 'svelte';
+  import {currentUser} from '$lib/stores/interactive-comments';
 
 	/** @type String */
-	export let currentUser;
 	export let content = '';
 	export let createdAt = '';
 	export let vote = 0;
 	export let username = '';
 
-	export let onEdit = () => {};
-	export let onDelete = () => {};
+  const dispatch = createEventDispatcher();
 </script>
 
 <div class="container">
@@ -25,7 +25,12 @@
 	</div>
 
 	<div class="edit-container">
-		<EditOptions withDelete={currentUser == username} {onEdit} {onDelete} />
+		<EditOptions 
+      withDelete={$currentUser == username}
+      withReply={$currentUser != username}
+      on:reply={() => dispatch('reply')}
+      on:delete={() => dispatch('delete')} 
+      on:edit={() => dispatch('edit')} />
 	</div>
 
 	<div class="comment-container">

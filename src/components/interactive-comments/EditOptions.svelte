@@ -1,26 +1,36 @@
 <script>
 	import IconDelete from './IconDelete.svelte';
+  import IconReply from './IconReply.svelte';
 	import IconEdit from './IconEdit.svelte';
+  import {createEventDispatcher} from 'svelte';
 
 	export let withDelete = false;
-	export let onEdit = () => {};
-	export let onDelete = () => {};
+  export let withReply = false;
 
-  console.log(onDelete);
+  const dispatch = createEventDispatcher();
+
 </script>
 
 <div class="container">
 	{#if withDelete}
-		<button type="button" class="delete" on:click|self={onDelete}>
+		<button type="button" class="delete" on:click|self={() => dispatch('delete')}>
 			<IconDelete />
 			Delete
 		</button>
 	{/if}
 
-	<button type="button" class="edit" on:click|self={onEdit}>
+  {#if withReply}
+    <button type="button" class="reply" on:click|self={() => dispatch('reply')}>
+      <IconReply />
+      Reply
+    </button>
+  {:else}
+  <button type="button" class="edit" on:click|self={() => dispatch('edit')}>
 		<IconEdit />
 		Edit
 	</button>
+  {/if}
+	
 </div>
 
 <style type="text/css">

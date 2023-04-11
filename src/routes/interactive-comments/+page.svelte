@@ -1,9 +1,19 @@
 <script>
 	import CommentInput from '$components/interactive-comments/CommentInput.svelte';
 	import Comment from '$components/interactive-comments/Comment.svelte';
+	import Modal from '$components/interactive-comments/Modal.svelte';
+	import { currentUser, onDeleteComment } from '$lib/stores/interactive-comments';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
+
+	currentUser.set(data.data.currentUser.username);
+  let displayModal = false;
+
+	onDeleteComment.subscribe((id) => {
+    console.log(!!id);
+    displayModal = !!id;
+  });
 </script>
 
 <div class="container">
@@ -13,7 +23,8 @@
 			createdAt={comment.createdAt}
 			vote={comment.score}
 			username={comment.user.username}
-			id={comment.id}
+			currentUser={data.data.currentUser.username}
+			onDelete={() => $onDeleteComment = comment.id}
 		/>
 		{#if comment.replies.length > 0}
 			<div class="replies">
@@ -23,7 +34,8 @@
 						createdAt={reply.createdAt}
 						vote={reply.score}
 						username={reply.user.username}
-						id={reply.id}
+						currentUser={data.data.currentUser.username}
+						onDelete={() => $onDeleteComment = reply.id}
 					/>
 				{/each}
 			</div>
@@ -32,6 +44,17 @@
 
 	<CommentInput authorName={data.data.currentUser.username} />
 </div>
+
+<Modal
+	title="Delete comment"
+	confirmLabel="Yes, Delete"
+	cancelLabel="No, Cancel"
+	display={displayModal}
+>
+	<p>
+		Are you sure you want to delete this comment? This will remove the command and can't be undone.
+	</p>
+</Modal>
 
 <svelte:head>
 	<title>Interactive Comments</title>
@@ -75,9 +98,9 @@
 			margin: 1rem auto;
 		}
 
-    .replies {
-      margin-left: 38px;
-		  padding-left: 36px;
-    }
+		.replies {
+			margin-left: 38px;
+			padding-left: 36px;
+		}
 	}
 </style>

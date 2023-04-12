@@ -1,7 +1,7 @@
 <script>
-  import {createEventDispatcher} from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	export let count = 0;
-  const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher();
 </script>
 
 <div class="vote-container">

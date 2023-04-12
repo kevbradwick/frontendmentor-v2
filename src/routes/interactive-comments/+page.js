@@ -4,9 +4,7 @@ import { currentUser, comments } from '$lib/stores/interactive-comments';
 
 /** @type {import('./$types').PageLoad} */
 export function load({ params }) {
-  currentUser.set(data.currentUser.username);
-  comments.set(data.comments);
-	return {
-
-	};
+	currentUser.set(data.currentUser.username);
+	comments.set(data.comments);
+	return {};
 }

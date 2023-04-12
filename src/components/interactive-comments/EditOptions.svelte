@@ -1,14 +1,13 @@
 <script>
 	import IconDelete from './IconDelete.svelte';
-  import IconReply from './IconReply.svelte';
+	import IconReply from './IconReply.svelte';
 	import IconEdit from './IconEdit.svelte';
-  import {createEventDispatcher} from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 
 	export let withDelete = false;
-  export let withReply = false;
+	export let withReply = false;
 
-  const dispatch = createEventDispatcher();
-
+	const dispatch = createEventDispatcher();
 </script>
 
 <div class="container">
@@ -19,18 +18,17 @@
 		</button>
 	{/if}
 
-  {#if withReply}
-    <button type="button" class="reply" on:click|self={() => dispatch('reply')}>
-      <IconReply />
-      Reply
-    </button>
-  {:else}
-  <button type="button" class="edit" on:click|self={() => dispatch('edit')}>
-		<IconEdit />
-		Edit
-	</button>
-  {/if}
-	
+	{#if withReply}
+		<button type="button" class="reply" on:click|self={() => dispatch('reply')}>
+			<IconReply />
+			Reply
+		</button>
+	{:else}
+		<button type="button" class="edit" on:click|self={() => dispatch('edit')}>
+			<IconEdit />
+			Edit
+		</button>
+	{/if}
 </div>
 
 <style type="text/css">

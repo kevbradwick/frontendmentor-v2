@@ -2,42 +2,42 @@
 	import VotingPill from './VotingPill.svelte';
 	import Author from './Author.svelte';
 	import EditOptions from './EditOptions.svelte';
-  import {createEventDispatcher} from 'svelte';
-  import {currentUser, votes} from '$lib/stores/interactive-comments';
+	import { createEventDispatcher } from 'svelte';
+	import { currentUser, votes } from '$lib/stores/interactive-comments';
 
 	/** @type String */
 	export let content = '';
 	export let createdAt = '';
 	export let vote = 0;
 	export let username = '';
-  /** @type Number */
-  export let commentId;
+	/** @type Number */
+	export let commentId;
 
-  const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher();
 
-  const handleUpvote = () => {
-    // @ts-ignore
-    const voteCounts = $votes[commentId] || {up: 0, down: 0};
-    if (voteCounts.up) {
-      return;
-    }
-    voteCounts.up = 1;
-    voteCounts.down = 0;
-    vote++;
-    votes.update(v => ({...v, [commentId]: voteCounts}));
-  }
+	const handleUpvote = () => {
+		// @ts-ignore
+		const voteCounts = $votes[commentId] || { up: 0, down: 0 };
+		if (voteCounts.up) {
+			return;
+		}
+		voteCounts.up = 1;
+		voteCounts.down = 0;
+		vote++;
+		votes.update((v) => ({ ...v, [commentId]: voteCounts }));
+	};
 
-  const handleDownvote = () => {
-    // @ts-ignore
-    const voteCounts = $votes[commentId] || {up: 0, down: 0};
-    if (voteCounts.down) {
-      return;
-    }
-    voteCounts.down = 1;
-    voteCounts.up = 0;
-    vote--;
-    votes.update(v => ({...v, [commentId]: voteCounts}));
-  }
+	const handleDownvote = () => {
+		// @ts-ignore
+		const voteCounts = $votes[commentId] || { up: 0, down: 0 };
+		if (voteCounts.down) {
+			return;
+		}
+		voteCounts.down = 1;
+		voteCounts.up = 0;
+		vote--;
+		votes.update((v) => ({ ...v, [commentId]: voteCounts }));
+	};
 </script>
 
 <div class="container">
@@ -51,12 +51,13 @@
 	</div>
 
 	<div class="edit-container">
-		<EditOptions 
-      withDelete={$currentUser == username}
-      withReply={$currentUser != username}
-      on:reply={() => dispatch('reply')}
-      on:delete={() => dispatch('delete')} 
-      on:edit={() => dispatch('edit')} />
+		<EditOptions
+			withDelete={$currentUser == username}
+			withReply={$currentUser != username}
+			on:reply={() => dispatch('reply')}
+			on:delete={() => dispatch('delete')}
+			on:edit={() => dispatch('edit')}
+		/>
 	</div>
 
 	<div class="comment-container">

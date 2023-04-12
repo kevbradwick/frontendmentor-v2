@@ -1,5 +1,5 @@
 <script>
-  import {createEventDispatcher} from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 
 	/** @type String */
 	export let title;
@@ -9,36 +9,35 @@
 	export let cancelLabel;
 	export let visible = false;
 
-  const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher();
 
-  const onCancel = () => {
-    visible = false;
-    dispatch('cancel');
-  }
+	const onCancel = () => {
+		visible = false;
+		dispatch('cancel');
+	};
 
-  const onConfirm = () => {
-    visible = false;
-    dispatch('confirm');
-  }
+	const onConfirm = () => {
+		visible = false;
+		dispatch('confirm');
+	};
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 
 <div class="container" on:click|self={onCancel} class:visible>
-  <div class="modal">
-    <div class="modal-header">
-      <h2>{title}</h2>
-    </div>
-    <div class="modal-body">
-      <slot />
-    </div>
-    <div class="modal-footer">
-      <button class="cancel" on:click|self={onCancel}>{cancelLabel}</button>
-      <button class="confirm" on:click|self={onConfirm}>{confirmLabel}</button>
-    </div>
-  </div>
+	<div class="modal">
+		<div class="modal-header">
+			<h2>{title}</h2>
+		</div>
+		<div class="modal-body">
+			<slot />
+		</div>
+		<div class="modal-footer">
+			<button class="cancel" on:click|self={onCancel}>{cancelLabel}</button>
+			<button class="confirm" on:click|self={onConfirm}>{confirmLabel}</button>
+		</div>
+	</div>
 </div>
-
 
 <style type="text/css">
 	.container {
@@ -54,9 +53,9 @@
 		z-index: 100;
 	}
 
-  .visible {
-    display: flex;
-  }
+	.visible {
+		display: flex;
+	}
 
 	.modal {
 		display: flex;
@@ -65,7 +64,7 @@
 		background-color: var(--white);
 		padding: 2rem;
 		border-radius: 0.7rem;
-    max-width: 400px;
+		max-width: 400px;
 	}
 
 	.modal-header h2 {

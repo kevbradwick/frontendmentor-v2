@@ -6,6 +6,7 @@
 
 	export let withDelete = false;
 	export let withReply = false;
+  export let withEdit = false;
 
 	const dispatch = createEventDispatcher();
 </script>
@@ -23,7 +24,9 @@
 			<IconReply />
 			Reply
 		</button>
-	{:else}
+	{/if}
+  
+  {#if withEdit}
 		<button type="button" class="edit" on:click|self={() => dispatch('edit')}>
 			<IconEdit />
 			Edit

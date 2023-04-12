@@ -1,7 +1,19 @@
-import { writable } from 'svelte/store';
+import { writable } from "svelte/store";
 
-export const currentUser = writable('');
+/** @type InteractiveComments.User _currentUser */
+const _currentUser = {
+  username: "anonymous",
+  image: {
+    png: "--",
+    webp: "--"
+  }
+};
+
+export const currentUser = writable(_currentUser);
 
 export const votes = writable({});
 
-export const comments = writable([]);
+/** @type InteractiveComments.Comment[] _comments */
+const _comments = [];
+
+export const comments = writable(_comments);

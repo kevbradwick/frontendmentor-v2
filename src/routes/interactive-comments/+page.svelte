@@ -28,7 +28,7 @@
       };
     });
     // @ts-ignore
-    comments = newComments;
+    comments.set(newComments);
   }
 </script>
 

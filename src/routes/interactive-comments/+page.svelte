@@ -1,5 +1,5 @@
 <script>
-// @ts-nocheck
+  // @ts-nocheck
 
   import Comment from "$components/interactive-comments/Comment.svelte";
   import { comments } from "$lib/stores/interactive-comments";
@@ -44,7 +44,6 @@
   </div>
 </main>
 
-
 <svelte:head>
   <title>Interactive Comments</title>
 
@@ -55,14 +54,9 @@
     rel="stylesheet"
   />
 
-  <link
-    rel="stylesheet"
-    href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
   <link rel="stylesheet" type="text/css" href="/interactive-comments/style.css" media="screen" />
+
+  <link rel="icon" type="image/png" href="/interactive-comments/images/favicon-32x32.png" />
 </svelte:head>
 
 <style type="text/css">

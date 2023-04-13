@@ -1,0 +1,31 @@
+:root {
+  --strong-cyan: hsl(172, 67%, 45%);
+  --very-dark-cyan: hsl(183, 100%, 15%);
+  --dark-gray-cyan: hsl(186, 14%, 43%);
+  --gray-cyan: hsl(184, 14%, 56%);
+  --light-gray-cyan: hsl(185, 41%, 84%);
+  --very-light-gray-cyan: hsl(189, 41%, 97%);
+  --white: hsl(0, 0%, 100%);
+
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-size: 16px;
+
+  --border-radius: 1rem;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Space Mono", serif;
+  font-size: var(--font-size);
+  font-weight: var(--font-weight-normal);
+  background-color: var(--light-gray-cyan);
+  color: var(--very-dark-cyan);
+}

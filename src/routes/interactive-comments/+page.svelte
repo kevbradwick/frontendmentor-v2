@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
   import Comment from "$components/interactive-comments/Comment.svelte";
   import { comments } from "$lib/stores/interactive-comments";
   import { onMount } from "svelte";
@@ -14,31 +16,34 @@
   });
 </script>
 
-<div class="container">
-  {#each $comments as comment}
-    {#if comment.replies.length > 0 && repliesVisible}
-      <Comment {comment} withReply={() => comment.id == 2}>
-        <div class="replies" transition:fade>
-          {#each comment.replies as reply}
-            {#if reply.replies.length > 0 && repliesVisible}
-              <Comment comment={reply}>
-                <div class="replies" transition:fade>
-                  {#each reply.replies as r}
-                    <Comment comment={r} />
-                  {/each}
-                </div>
-              </Comment>
-            {:else}
-              <Comment comment={reply} />
-            {/if}
-          {/each}
-        </div>
-      </Comment>
-    {:else}
-      <Comment {comment} />
-    {/if}
-  {/each}
-</div>
+<main>
+  <div class="container">
+    {#each $comments as comment}
+      {#if comment.replies.length > 0 && repliesVisible}
+        <Comment {comment} withReply={() => comment.id == 2}>
+          <div class="replies" transition:fade>
+            {#each comment.replies as reply}
+              {#if reply.replies.length > 0 && repliesVisible}
+                <Comment comment={reply}>
+                  <div class="replies" transition:fade>
+                    {#each reply.replies as r}
+                      <Comment comment={r} />
+                    {/each}
+                  </div>
+                </Comment>
+              {:else}
+                <Comment comment={reply} />
+              {/if}
+            {/each}
+          </div>
+        </Comment>
+      {:else}
+        <Comment {comment} />
+      {/if}
+    {/each}
+  </div>
+</main>
+
 
 <svelte:head>
   <title>Interactive Comments</title>

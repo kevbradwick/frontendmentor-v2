@@ -4,13 +4,13 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-  - [Built with](#built-with)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+-   [Overview](#overview)
+    -   [The challenge](#the-challenge)
+    -   [Screenshot](#screenshot)
+    -   [Links](#links)
+    -   [Built with](#built-with)
+-   [Author](#author)
+-   [Acknowledgments](#acknowledgments)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -20,12 +20,12 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
 
 Users should be able to:
 
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Create, Read, Update, and Delete comments and replies
-- Upvote and downvote comments
-- **Bonus**: If you're building a purely front-end project, use `localStorage` to save the current state in the browser that persists when the browser is refreshed.
-- **Bonus**: Instead of using the `createdAt` strings from the `data.json` file, try using timestamps and dynamically track the time since the comment or reply was posted.
+-   View the optimal layout for the app depending on their device's screen size
+-   See hover states for all interactive elements on the page
+-   Create, Read, Update, and Delete comments and replies
+-   Upvote and downvote comments
+-   **Bonus**: If you're building a purely front-end project, use `localStorage` to save the current state in the browser that persists when the browser is refreshed.
+-   **Bonus**: Instead of using the `createdAt` strings from the `data.json` file, try using timestamps and dynamically track the time since the comment or reply was posted.
 
 ### Screenshot
 
@@ -33,16 +33,16 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [https://frontendmentor-v2-three.vercel.app/interactive-comments](https://frontendmentor-v2-three.vercel.app/interactive-comments)
+-   Solution URL: [https://github.com/kevbradwick/frontendmentor-v2/tree/master/challenges/interactive-comments/solution](https://github.com/kevbradwick/frontendmentor-v2/tree/master/challenges/interactive-comments/solution)
+-   Live Site URL: [https://frontendmentor-v2-three.vercel.app/interactive-comments](https://frontendmentor-v2-three.vercel.app/interactive-comments)
 
 ### Built with
 
-- [SvelteKit]()
+-   [SvelteKit](https://kit.svelte.dev/)
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+-   Frontend Mentor - [@kevbradwick](https://www.frontendmentor.io/profile/kevbradwick)
 
 ## Acknowledgments
 

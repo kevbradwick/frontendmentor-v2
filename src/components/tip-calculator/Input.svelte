@@ -1,7 +1,14 @@
 <script>
+  export let error = false;
+  const onFocus = () => {
+    const input = document.getElementById($$restProps.id);
+    if (input) {
+      input.focus();
+    }
+  };
 </script>
 
-<div class="container">
+<div class="container" class:error on:click|self={onFocus} on:keydown={onFocus}>
   <slot />
   <input {...$$restProps} />
 </div>
@@ -17,6 +24,10 @@
     padding: 12px 14px 12px 18px;
     border-radius: 5px;
   }
+  .container:focus-within {
+    border: 3px solid var(--strong-cyan);
+  }
+
   input {
     border: none;
     background-color: transparent;
@@ -24,6 +35,10 @@
     font-size: 24px;
     font-weight: var(--font-weight-bold);
     color: var(--very-dark-cyan);
+  }
+
+  .error {
+    border: 3px solid var(--soft-red);
   }
 
   input:focus {

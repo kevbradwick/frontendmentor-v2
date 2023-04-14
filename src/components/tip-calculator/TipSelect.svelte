@@ -41,11 +41,11 @@
     </li>
     <li class:custom={amount === "custom"} class:focus={customHasFocus}>
       {#if amount === "custom"}
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
         <span
           on:click={() => {
             customHasFocus = true;
           }}
+          on:keydown={() => (customHasFocus = true)}
         >
           <input
             type="text"
@@ -91,7 +91,7 @@
     border-radius: 0.35rem;
   }
 
-  .focus span {
+  span:focus-within {
     border: 3px solid var(--strong-cyan);
   }
 
@@ -109,6 +109,12 @@
     border-radius: 0.35rem;
     font-size: 1.5rem;
     font-weight: var(--font-weight-bold);
+    transition: background-color 0.2s ease;
+  }
+
+  label:hover {
+    background-color: var(--strong-cyan);
+    color: var(--very-dark-cyan);
   }
 
   input[type="radio"]:checked + label {

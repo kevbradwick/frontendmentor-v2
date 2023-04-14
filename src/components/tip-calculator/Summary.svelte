@@ -77,7 +77,7 @@
     background-color: var(--strong-cyan);
     color: var(--very-dark-cyan);
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     outline: none;
     cursor: pointer;
     text-transform: uppercase;
@@ -86,5 +86,11 @@
     display: block;
     width: 100%;
     padding: 1rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .container {
+      gap: 2rem;
+    }
   }
 </style>

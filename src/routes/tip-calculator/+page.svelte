@@ -62,8 +62,24 @@
 
   @media screen and (min-width: 768px) {
     main {
+      display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .container {
+      width: 920px;
+      height: auto;
+      grid-template: auto 1fr / 1fr;
+    }
+
+    .container > :global(div:last-child) {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .logo {
+      margin-top: 0;
     }
   }
 </style>

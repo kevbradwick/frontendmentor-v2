@@ -11,4 +11,10 @@
     border-top-left-radius: var(--radius);
     padding: 2.5rem;
   }
+
+  @media screen and (min-width: 768px) {
+    div {
+      border-radius: 2rem;
+    }
+  }
 </style>

@@ -4,9 +4,11 @@
 
 <style type="text/css">
   div {
+    --radius: 2rem;
+
     background-color: var(--white);
-    border-radius: 2rem;
-    padding: 1rem 1.5rem;
-    box-shadow: 5px 5px 20px var(--gray-cyan);
+    border-top-right-radius: var(--radius);
+    border-top-left-radius: var(--radius);
+    padding: 2.5rem;
   }
 </style>

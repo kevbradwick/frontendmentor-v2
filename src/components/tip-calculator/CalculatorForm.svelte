@@ -31,11 +31,11 @@
   form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2.5rem;
   }
   .row {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.8rem;
   }
 </style>

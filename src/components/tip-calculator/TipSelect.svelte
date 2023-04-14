@@ -1,14 +1,15 @@
 <script>
   let amount = "";
   let customValue = "0";
-  let customHasFocus = false;
-
+  $: customHasFocus = amount === "custom";
   $: {
     if (customHasFocus) {
-      const input = document.getElementById("tip6");
-      if (input) {
-        input.focus();
-      }
+      setTimeout(() => {
+        const input = document.getElementById("tip7");
+        if (input) {
+          input.focus();
+        }
+      }, 30);
     }
   }
 </script>
@@ -43,8 +44,7 @@
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <span
           on:click={() => {
-            // @ts-ignore
-            document.getElementById("tip7").focus();
+            customHasFocus = true;
           }}
         >
           <input
@@ -91,7 +91,7 @@
     border-radius: 0.35rem;
   }
 
-  .custom.focus span {
+  .focus span {
     border: 3px solid var(--strong-cyan);
   }
 
@@ -101,7 +101,7 @@
 
   label {
     display: block;
-    background-color: var(--dark-gray-cyan);
+    background-color: var(--very-dark-cyan);
     color: var(--very-light-gray-cyan);
     cursor: pointer;
     text-align: center;

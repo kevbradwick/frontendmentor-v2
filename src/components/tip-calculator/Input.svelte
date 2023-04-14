@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
     background-color: var(--very-light-gray-cyan);
     padding: 12px 14px 12px 18px;

@@ -3,10 +3,29 @@
   import Logo from "$components/tip-calculator/Logo.svelte";
   import CalculatorForm from "$components/tip-calculator/CalculatorForm.svelte";
   import Summary from "$components/tip-calculator/Summary.svelte";
+  import { calculateTip } from "$lib/tip-calculator";
 
   let billAmount = 0;
   let numberOfPeople = 0;
   let tipPercentage = 0;
+  let tipAmountPerPerson = 0;
+  let totalPerPerson = 0;
+
+  const reset = () => {
+    billAmount = 0;
+    numberOfPeople = 0;
+    tipPercentage = 0;
+    tipAmountPerPerson = 0;
+    totalPerPerson = 0;
+  };
+
+  $: {
+    if (billAmount > 0 && numberOfPeople > 0) {
+      const values = calculateTip(billAmount, tipPercentage, numberOfPeople);
+      tipAmountPerPerson = values.tipAmountPerPerson;
+      totalPerPerson = values.totalPerPerson;
+    }
+  }
 </script>
 
 <main>
@@ -16,7 +35,7 @@
     </div>
     <Panel>
       <CalculatorForm bind:billAmount bind:tipPercentage bind:numberOfPeople />
-      <Summary />
+      <Summary bind:tipAmountPerPerson bind:totalPerPerson on:reset={reset} />
     </Panel>
   </div>
 </main>

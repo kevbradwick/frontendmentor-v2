@@ -11,7 +11,7 @@ export const calculateTip = (bill, tip, people) => {
   let totalTip = bill * (tip / 100);
   return {
     tipAmountPerPerson: totalTip / people,
-    totalPerPerson: bill + totalTip / people
+    totalPerPerson: (bill + totalTip) / people
   };
 };
 

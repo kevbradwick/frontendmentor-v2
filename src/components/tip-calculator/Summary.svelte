@@ -1,5 +1,9 @@
 <script>
-  import { tipAmount, totalAmount } from "$lib/tip-calculator/store";
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+  export let tipAmountPerPerson = 0;
+  export let totalPerPerson = 0;
 </script>
 
 <div class="container">
@@ -10,7 +14,7 @@
       <p class="light">/ person</p>
     </div>
     <div class="col">
-      <p class="number">${$tipAmount.toFixed(2)}</p>
+      <p class="number">{tipAmountPerPerson}</p>
     </div>
   </div>
 
@@ -21,7 +25,7 @@
       <p class="light">/ person</p>
     </div>
     <div class="col">
-      <p class="number">${$totalAmount.toFixed(2)}</p>
+      <p class="number">{totalPerPerson}</p>
     </div>
   </div>
 
@@ -29,7 +33,7 @@
 
   <!-- reset button -->
   <div class="row">
-    <button class="reset">Reset</button>
+    <button class="reset" on:click|preventDefault|self={() => dispatch("reset")}>Reset</button>
   </div>
 </div>
 

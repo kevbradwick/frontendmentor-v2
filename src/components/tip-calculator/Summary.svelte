@@ -1,8 +1,5 @@
 <script>
-  /** @type number */
-  export let tipAmount = 0.0;
-  /** @type number */
-  export let totalAmount = 0.0;
+  import { tipAmount, totalAmount } from "$lib/tip-calculator/store";
 </script>
 
 <div class="container">
@@ -13,7 +10,7 @@
       <p class="light">/ person</p>
     </div>
     <div class="col">
-      <p class="number">${tipAmount.toFixed(2)}</p>
+      <p class="number">${$tipAmount.toFixed(2)}</p>
     </div>
   </div>
 
@@ -24,7 +21,7 @@
       <p class="light">/ person</p>
     </div>
     <div class="col">
-      <p class="number">${totalAmount.toFixed(2)}</p>
+      <p class="number">${$totalAmount.toFixed(2)}</p>
     </div>
   </div>
 

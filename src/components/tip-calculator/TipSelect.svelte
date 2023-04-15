@@ -1,6 +1,12 @@
 <script>
-  let amount = "";
-  let customValue = "0";
+  let amount = "5";
+  let customValue = "";
+
+  // the selected tip percentage. you can bind to this value outside of this component
+  export let tipPercentage = 0;
+
+  const validNumberRegEx = /^\s*[+-]?(\d+|\d*\.\d+|\d+\.\d*)([Ee][+-]?\d+)?\s*$/;
+
   $: customHasFocus = amount === "custom";
   $: {
     if (customHasFocus) {
@@ -10,6 +16,19 @@
           input.focus();
         }
       }, 30);
+    }
+  }
+  $: {
+    // if the user selects a custom value that is not a number, then we set the tip percentage to 0
+    if (validNumberRegEx.test(customValue)) {
+      tipPercentage = parseFloat(customValue);
+    } else {
+      customValue = "";
+      tipPercentage = 0;
+    }
+
+    if (amount !== "custom") {
+      tipPercentage = parseFloat(amount);
     }
   }
 </script>

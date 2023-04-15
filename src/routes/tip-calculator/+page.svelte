@@ -3,6 +3,10 @@
   import Logo from "$components/tip-calculator/Logo.svelte";
   import CalculatorForm from "$components/tip-calculator/CalculatorForm.svelte";
   import Summary from "$components/tip-calculator/Summary.svelte";
+
+  let billAmount = 0;
+  let numberOfPeople = 0;
+  let tipPercentage = 0;
 </script>
 
 <main>
@@ -11,7 +15,7 @@
       <Logo />
     </div>
     <Panel>
-      <CalculatorForm />
+      <CalculatorForm bind:billAmount bind:tipPercentage bind:numberOfPeople />
       <Summary />
     </Panel>
   </div>

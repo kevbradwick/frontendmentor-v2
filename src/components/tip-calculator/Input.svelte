@@ -1,5 +1,6 @@
 <script>
   export let error = false;
+  export let value = "";
   const onFocus = () => {
     const input = document.getElementById($$restProps.id);
     if (input) {
@@ -10,7 +11,7 @@
 
 <div class="container" class:error on:click|self={onFocus} on:keydown={onFocus}>
   <slot />
-  <input {...$$restProps} />
+  <input {...$$restProps} bind:value />
 </div>
 
 <style>
@@ -38,7 +39,7 @@
   }
 
   .error {
-    border: 3px solid var(--soft-red);
+    border: 3px solid var(--soft-red) !important;
   }
 
   input:focus {

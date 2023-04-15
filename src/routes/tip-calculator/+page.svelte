@@ -12,7 +12,7 @@
   let totalPerPerson = 0;
 
   const reset = () => {
-    billAmount = 0;
+    billAmount = 100;
     numberOfPeople = 0;
     tipPercentage = 0;
     tipAmountPerPerson = 0;

@@ -24,9 +24,10 @@
     background-color: var(--very-light-gray-cyan);
     padding: 12px 14px 12px 18px;
     border-radius: 5px;
+    border: 3px solid var(--very-light-gray-cyan);
   }
   .container:focus-within {
-    border: 3px solid var(--strong-cyan);
+    border-color: var(--strong-cyan);
   }
 
   input {
@@ -39,7 +40,7 @@
   }
 
   .error {
-    border: 3px solid var(--soft-red) !important;
+    border-color: var(--soft-red) !important;
   }
 
   input:focus {

@@ -87,6 +87,11 @@
     display: block;
     width: 100%;
     padding: 1rem;
+    transition: background-color 0.2s ease-in;
+  }
+
+  button:hover {
+    background-color: var(--light-gray-cyan);
   }
 
   @media screen and (min-width: 768px) {

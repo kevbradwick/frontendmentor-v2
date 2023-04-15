@@ -15,6 +15,7 @@
   @media screen and (min-width: 768px) {
     div {
       border-radius: 2rem;
+      box-shadow: 25px 25px 45px var(--shadow);
     }
   }
 </style>

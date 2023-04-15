@@ -14,7 +14,7 @@
       <p class="light">/ person</p>
     </div>
     <div class="col">
-      <p class="number">{tipAmountPerPerson}</p>
+      <p class="number">${tipAmountPerPerson.toFixed(2)}</p>
     </div>
   </div>
 
@@ -25,7 +25,7 @@
       <p class="light">/ person</p>
     </div>
     <div class="col">
-      <p class="number">{totalPerPerson}</p>
+      <p class="number">${totalPerPerson.toFixed(2)}</p>
     </div>
   </div>
 

@@ -50,14 +50,20 @@
             <p><strong>Languages:</strong> {country.languages.join(", ")}</p>
           </div>
         </div>
-        <div class="border-countries-container">
-          <h2>Border Countries:</h2>
-          <ul class="items">
-            <li><Link href="/countries?s=France">France</Link></li>
-            <li><Link href="/countries?s=Germany">Germany</Link></li>
-            <li><Link href="/countries?s=Netherlands">Netherlands</Link></li>
-          </ul>
-        </div>
+        {#if country.borders.length}
+          <div class="border-countries-container">
+            <h2>Border Countries:</h2>
+            <ul class="items">
+              {#each country.borders as borderingCountry}
+                <li>
+                  <Link href={`/countries/${borderingCountry.countryCode}`}
+                    >{borderingCountry.name}</Link
+                  >
+                </li>
+              {/each}
+            </ul>
+          </div>
+        {/if}
       </div>
     </article>
   {:else if error}
@@ -149,6 +155,10 @@
       flex-direction: row;
       align-items: baseline;
       justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .border-countries-container ul {
       flex-wrap: wrap;
     }
   }

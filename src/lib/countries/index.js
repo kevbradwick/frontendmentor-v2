@@ -1,3 +1,11 @@
+import data from "$data/countries/data.json";
+
+/** @type Countries.CountryCodeMap */
+const COUNTRY_CODES = {};
+data.forEach((e) => {
+  COUNTRY_CODES[e.alpha3Code] = e.name;
+});
+
 /**
  * @param {Countries.CountryResponse} country
  *
@@ -13,6 +21,17 @@ const mapCountryResponse = (country) => {
   const population = country.population;
   const currencies = Object.values(country.currencies).map((c) => c.name);
   const flag = country.flags;
+  /** @type Countries.CountryBorder[] */
+  const borders = [];
+
+  if (country.borders) {
+    country.borders.forEach((countryCode) => {
+      const name = COUNTRY_CODES[countryCode];
+      if (name) {
+        borders.push({ countryCode, name });
+      }
+    });
+  }
 
   let nativeName = "";
   let capital = "n/a";
@@ -44,7 +63,8 @@ const mapCountryResponse = (country) => {
     googleMap,
     population,
     currencies,
-    flag
+    flag,
+    borders
   };
 };
 
@@ -69,7 +89,8 @@ export async function getAllCountries(region, search, countryCode) {
     "currencies",
     "languages",
     "maps",
-    "flags"
+    "flags",
+    "borders"
   ];
   let url = "https://restcountries.com/v3.1/all";
   if (region) {

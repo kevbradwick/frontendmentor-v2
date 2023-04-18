@@ -5,6 +5,11 @@ namespace Countries {
     alt: string;
   };
 
+  export type CountryBorder = {
+    countryCode: string;
+    name: string;
+  };
+
   export type Country = {
     name: string;
     nativeName: string;
@@ -14,10 +19,15 @@ namespace Countries {
     region: string;
     subRegion: string;
     languages: string[];
-    googleMap: string | undefined;
+    googleMap?: string;
     population: number;
     currencies: string[];
     flag: Flag;
+    borders?: CountryBorder[];
+  };
+
+  export type CountryCodeMap = {
+    [key: string]: string;
   };
 
   export type CountryResponse = {
@@ -55,5 +65,6 @@ namespace Countries {
       svg: string;
       alt: string;
     };
+    borders?: string[];
   };
 }

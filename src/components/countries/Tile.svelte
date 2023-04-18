@@ -28,7 +28,7 @@
     <img src={flag.svg} alt={flag.alt} />
   </div>
   <div class="content">
-    <h3>{name}</h3>
+    <h2>{name}</h2>
     <p><strong>Population:</strong> {population}</p>
     <p><strong>Region:</strong> {region}</p>
     <p><strong>Capital:</strong> {capital}</p>
@@ -63,7 +63,7 @@
     padding: 1.2rem 1.8rem;
   }
 
-  .content h3 {
+  .content h2 {
     padding: 0;
     margin: 0 0 1.4rem 0;
     font-size: 1.2rem;

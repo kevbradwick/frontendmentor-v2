@@ -2,7 +2,7 @@
 </script>
 
 <form method="get" action="/countries" class="search-bar">
-  <button>
+  <button type="submit" role="none">
     <i class="fa-solid fa-magnifying-glass" />
   </button>
   <input type="text" id="s" name="s" placeholder="Search for a country..." />

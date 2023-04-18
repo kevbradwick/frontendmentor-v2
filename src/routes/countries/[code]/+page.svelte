@@ -50,7 +50,7 @@
             <p><strong>Languages:</strong> {country.languages.join(", ")}</p>
           </div>
         </div>
-        {#if country.borders.length}
+        {#if country.borders && country.borders.length}
           <div class="border-countries-container">
             <h2>Border Countries:</h2>
             <ul class="items">

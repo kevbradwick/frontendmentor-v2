@@ -29,6 +29,7 @@
     } catch (e) {
       console.error("failed to load countries", e);
       loadError = true;
+      countries = [];
     }
   });
 </script>
@@ -39,7 +40,9 @@
 </div>
 
 {#if loadError}
-  <Error />
+  <div class="error-container">
+    <Error />
+  </div>
 {/if}
 
 {#if countries}
@@ -75,6 +78,10 @@
     grid-template-columns: 1fr;
     margin-top: 4rem;
     gap: 5rem;
+  }
+
+  .error-container {
+    margin-top: 3rem;
   }
 
   section.loading {

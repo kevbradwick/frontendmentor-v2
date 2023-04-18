@@ -39,15 +39,15 @@
         <div class="country-info">
           <div>
             <p><strong>Native Name:</strong> {country.nativeName}</p>
-            <p><strong>Population:</strong> {country.population}</p>
+            <p><strong>Population:</strong> {country.population.toLocaleString()}</p>
             <p><strong>Region:</strong> {country.region}</p>
             <p><strong>Sub Region:</strong> {country.subRegion}</p>
             <p><strong>Capital:</strong> {country.capital}</p>
           </div>
           <div>
-            <p><strong>Top Level Domain:</strong> {country.topLevelDomain}</p>
-            <p><strong>Currencies:</strong> {country.currencies}</p>
-            <p><strong>Languages:</strong> {country.languages}</p>
+            <p><strong>Top Level Domain:</strong> {country.topLevelDomain.join(", ")}</p>
+            <p><strong>Currencies:</strong> {country.currencies.join(", ")}</p>
+            <p><strong>Languages:</strong> {country.languages.join(", ")}</p>
           </div>
         </div>
         <div class="border-countries-container">

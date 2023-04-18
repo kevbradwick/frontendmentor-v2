@@ -18,12 +18,19 @@
     height: 60px;
   }
   form input {
+    width: 100%;
     padding: 1rem;
+    font-size: 1.2rem;
     border: none;
     background-color: transparent;
+    transition: color 0.2s;
   }
   form input:focus {
     outline: none;
+  }
+
+  form input:focus::placeholder {
+    color: transparent;
   }
   button {
     color: var(--dark-gray);
@@ -38,6 +45,7 @@
   }
 
   :global(.dark-mode) i,
+  :global(.dark-mode) input,
   :global(.dark-mode) input::placeholder {
     color: var(--white);
   }

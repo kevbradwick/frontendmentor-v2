@@ -33,7 +33,7 @@
   }
   @media screen and (min-width: 768px) {
     main {
-      margin: 4rem 0 0 0;
+      margin: 4rem 0;
       padding: 0 4rem;
     }
   }

@@ -14,7 +14,7 @@
   </a>
   <div class="info">
     <span class="number">{number}</span>
-    <h3>{title}</h3>
+    <h3><a href="/news-homepage">{title}</a></h3>
     <p><slot /></p>
   </div>
 </div>

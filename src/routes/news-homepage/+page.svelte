@@ -3,6 +3,7 @@
   import NavMenu from "$components/news-homepage/NavMenu.svelte";
   import HeroArticle from "$components/news-homepage/HeroArticle.svelte";
   import Article from "$components/news-homepage/Article.svelte";
+  import NewsArticleList from "$components/news-homepage/NewsArticleList.svelte";
 </script>
 
 <div class="container">
@@ -14,7 +15,7 @@
   <main>
     <HeroArticle />
     <div class="news-items">
-      <h1>news items</h1>
+      <NewsArticleList />
     </div>
     <div class="articles">
       <Article image="image-retro-pcs.jpg" number="01" title="Reviving Retro PCs">
@@ -32,7 +33,7 @@
 
 <style>
   .container {
-    margin-top: 2.5rem;
+    margin: 2.5rem 0;
     padding: 0 1.5rem;
   }
 
@@ -43,12 +44,13 @@
 
   main {
     display: grid;
-    gap: 1rem;
+    gap: 2rem;
     grid-template-columns: 1fr;
     margin-top: 2rem;
   }
 
   main .articles {
+    margin-top: 2rem;
     display: grid;
     gap: 2rem;
   }
@@ -79,7 +81,7 @@
       grid-area: articles;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      gap: 2rem;
     }
   }
 </style>

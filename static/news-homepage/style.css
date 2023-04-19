@@ -51,3 +51,13 @@ body {
   background-color: var(--off-white);
   color: var(--very-dark-blue);
 }
+
+a {
+  text-decoration: none;
+  color: var(--very-dark-blue);
+  transition: color 0.2s ease-in;
+}
+
+a:hover {
+  color: var(--soft-red);
+}

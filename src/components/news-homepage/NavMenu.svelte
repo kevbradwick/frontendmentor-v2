@@ -96,5 +96,9 @@
       width: auto;
       padding: 0;
     }
+
+    ul li a {
+      color: var(--grayish-blue);
+    }
   }
 </style>

@@ -2,6 +2,7 @@
   --bg-gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
   --scissors-gradient-from: hsl(39, 89%, 49%);
   --scissors-gradient-to: hsl(40, 84%, 53%);
+  --paper-gradient-shadow: hsl(230, 63%, 48%);
   --paper-gradient-from: hsl(230, 89%, 62%);
   --paper-gradient-to: hsl(230, 89%, 65%);
   --rock-gradient-from: hsl(349, 71%, 52%);
